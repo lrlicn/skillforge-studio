@@ -1,0 +1,333 @@
+:root {
+  color: #262626;
+  background: #F5F5F5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { min-width: 320px; min-height: 100%; margin: 0; }
+body { background: #F5F5F5; }
+button, input, textarea { font-family: inherit; }
+.loading-screen { min-height: 100vh; display: grid; place-items: center; background: #F5F5F5; }
+.block-control { display: block; width: 100%; }
+
+/* 登录区使用紧凑双列结构，品牌和表单共同位于视口视觉中心。 */
+.auth-shell { min-height: 100vh; display: grid; grid-template-columns: minmax(280px, 360px) minmax(380px, 430px); align-items: center; justify-content: center; gap: 72px; padding: 40px; background: #F5F5F5; }
+.auth-brand { display: flex; align-items: center; gap: 16px; }
+.auth-brand .ant-typography { margin: 0; }
+.auth-brand > div:last-child { display: grid; gap: 4px; }
+.brand-logo { width: 64px; height: 64px; display: block; flex: 0 0 auto; }
+.brand-logo.small { width: 30px; height: 30px; }
+.eyebrow { color: #4B5CC4 !important; letter-spacing: .12em; font-size: 11px; font-weight: 700; }
+.auth-card { width: 100%; padding: 12px; border-radius: 8px; box-shadow: 0 18px 50px rgba(38, 38, 38, .08); }
+.auth-card h3 { margin: 8px 0; }
+.auth-card .ant-form-item { margin-bottom: 18px; }
+.auth-card .ant-input, .auth-card .ant-input-affix-wrapper, .auth-card .ant-btn { border-radius: 999px !important; }
+.auth-card .ant-input-affix-wrapper > .ant-input { border-radius: 0 !important; }
+.auth-card .ant-divider { margin-block: 20px; }
+.auth-switch { text-align: center; margin-top: 16px; color: #595959; }
+
+/* 主工作台由独立导航、固定顶部栏和可滚动内容区组成。 */
+.app-shell { width: calc(100% - 8px); height: calc(100vh - 8px); min-height: 0; margin: 4px; column-gap: 1px; border-radius: 8px; overflow: hidden; background: #F5F5F5; box-shadow: 0 3px 14px rgba(38, 38, 38, .07); }
+.app-shell.navigation-collapsed { column-gap: 0; }
+.app-shell > .ant-layout { min-width: 0; height: 100%; min-height: 0; border-radius: 7px; overflow: hidden; }
+.app-sider { height: 100%; position: sticky !important; top: 0; align-self: flex-start; border: 0 !important; border-radius: 7px; background: #FAFAFA !important; box-shadow: none !important; overflow: hidden; }
+.navigation-inner { height: 100%; position: relative; background: #FAFAFA; overflow: hidden; }
+.sider-brand { height: 58px; display: flex; gap: 10px; align-items: center; padding: 0 22px; color: #262626; font-weight: 700; font-size: 16px; }
+.workspace-switcher { width: calc(100% - 28px); min-height: 54px; margin: 4px 14px 18px; padding: 10px 12px; border: 1px solid #E5E5E5; border-radius: 999px; background: #FFFFFF; color: #262626; display: flex; align-items: center; gap: 8px; text-align: left; cursor: pointer; }
+.workspace-switcher:hover, .workspace-switcher:focus-visible { border-color: #4B5CC4; outline: none; }
+.workspace-switcher:disabled { cursor: default; color: #BFBFBF; }
+.workspace-switcher-copy { display: grid; flex: 1; min-width: 0; }
+.workspace-switcher-copy .ant-typography { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
+.source-dot { width: 8px; height: 8px; border-radius: 50%; background: #4B5CC4; flex: 0 0 auto; }
+.app-sider .ant-menu, .mobile-navigation .ant-menu { border-inline-end: 0 !important; padding: 0 10px; background: transparent; box-shadow: none !important; }
+/* 同时关闭菜单和选中项可能生成的边缘伪元素，避免主题升级后重新出现分割线。 */
+.app-sider .ant-menu-inline::after, .mobile-navigation .ant-menu-inline::after { display: none !important; border: 0 !important; content: none !important; }
+.app-sider .ant-menu-item, .mobile-navigation .ant-menu-item { border-radius: 999px; margin-block: 5px; }
+.app-sider .ant-menu-item-divider, .mobile-navigation .ant-menu-item-divider { height: 12px; margin: 4px 14px; border: 0; background: transparent; }
+.sider-bottom { position: absolute; left: 22px; right: 22px; bottom: 22px; }
+.sider-bottom .ant-typography { font-size: 11px; }
+.mobile-navigation { height: 100%; }
+.app-header { height: 58px; line-height: 58px; background: #FFFFFF !important; display: flex; justify-content: space-between; align-items: center; padding: 0 28px; position: sticky; top: 0; z-index: 10; box-shadow: 0 5px 16px rgba(38, 38, 38, .045); }
+.icon-button { border-radius: 999px !important; display: inline-flex; align-items: center; justify-content: center; }
+.header-leading { min-width: 0; display: flex; align-items: center; gap: 12px; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.breadcrumb .ant-typography { white-space: nowrap; }
+.editor-header-context { min-width: 0; max-width: min(34vw, 440px); padding-left: 14px; border-left: 1px solid #E5E5E5; display: flex; align-items: baseline; gap: 10px; line-height: 1.2; }
+.editor-header-context .ant-typography:first-child { min-width: 0; max-width: 260px; }
+.editor-header-context .ant-typography:last-child { flex: 0 0 auto; font-size: 12px; }
+.avatar { background: #4B5CC4 !important; color: #FFFFFF !important; cursor: pointer; }
+.source-tag { min-height: 24px; margin-inline-end: 0; border-radius: 999px; border-color: #E5E5E5; color: #595959; background: #F5F5F5; display: inline-flex; align-items: center; justify-content: center; gap: 4px; line-height: 1; }
+.source-tag .ant-tag-icon { margin-inline-end: 0; display: inline-flex; align-items: center; }
+.source-tag svg { display: block; flex: 0 0 auto; }
+.dirty-tag { border-radius: 999px; border-color: #4B5CC4; color: #4B5CC4; background: #FFFFFF; }
+.account-menu-identity { min-width: 190px; display: grid; }
+.account-menu-identity .ant-typography { overflow: hidden; text-overflow: ellipsis; }
+.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item, .ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-submenu-title { min-height: 38px; margin-block: 2px; border-radius: 999px !important; display: flex; align-items: center; }
+
+/* 内容区优先使用桌面宽度；管理页面控制阅读宽度，编辑页保持全宽。 */
+.app-content { min-width: 0; min-height: 0; flex: 1; padding: 18px 28px 24px; overflow: auto; }
+.app-content:not(.page-editor) > * { width: min(100%, 1440px); margin-inline: auto; }
+.page-editor { padding: 12px 20px 14px; overflow: hidden; }
+.page-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 18px; }
+.page-heading h2 { margin: 0 0 2px; overflow-wrap: anywhere; }
+.page-heading p { margin: 0; }
+.compact-heading { align-items: flex-end; margin-bottom: 16px; }
+.compact-heading h2 { font-size: 24px; }
+.heading-actions { flex: 0 0 auto; }
+.editor-heading { min-height: 72px; display: grid; grid-template-columns: minmax(220px, 1fr) auto minmax(300px, 1fr); align-items: center; }
+.editor-heading-copy { min-width: 0; }
+.editor-heading-copy h2, .editor-heading-copy p { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.editor-heading .heading-actions { justify-self: end; }
+.view-mode-switch { min-width: 280px; padding: 5px !important; border-radius: 999px !important; box-shadow: 0 3px 12px rgba(38, 38, 38, .08); }
+.view-mode-switch .ant-segmented-item { min-width: 86px; min-height: 38px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; font-size: 15px; }
+.view-mode-switch .ant-segmented-item-selected, .view-mode-switch .ant-segmented-thumb { border-radius: 999px !important; }
+.app-footer { min-height: 52px; padding: 16px 28px !important; background: #FFFFFF !important; display: flex; align-items: center; justify-content: space-between; gap: 20px; box-shadow: 0 -5px 16px rgba(38, 38, 38, .04); }
+.app-footer .ant-typography { font-size: 12px; }
+
+/* 概览卡片只出现在首页，编辑页不承担跨工作区统计信息。 */
+.summary-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 18px; }
+.summary-grid .ant-card { min-height: 126px; border-radius: 8px; transition: transform .18s ease, background-color .18s ease, box-shadow .18s ease; }
+.summary-grid .ant-card:hover { background: #CBD5F2; transform: translateY(-3px); box-shadow: 0 10px 24px rgba(38, 38, 38, .10); }
+.summary-label { display: flex; align-items: center; gap: 8px; color: #595959; font-size: 13px; }
+.summary-value { min-height: 38px; margin: 12px 0 3px; font-size: 28px; font-weight: 700; overflow-wrap: anywhere; }
+.summary-value.compact-value { font-size: 24px; }
+.summary-value.source-value { display: flex; align-items: center; gap: 16px; font-size: 18px; }
+.recent-workspace-row { min-height: 72px; padding: 12px 22px; display: grid; grid-template-columns: minmax(260px, 1fr) 100px 190px 100px; align-items: center; gap: 18px; border-bottom: 1px solid #E5E5E5; }
+.recent-workspace-row:nth-child(even) { background: #FAFAFA; }
+.recent-workspace-row:last-child { border-bottom: 0; }
+.recent-workspace-row:hover { background: #EDEDED; }
+.recent-workspace-row .workspace-name-cell { justify-content: flex-start; }
+.recent-workspace-row .workspace-name-cell > div:last-child { justify-items: start; text-align: left; }
+
+/* 文件树移入抽屉后，工作台整行只承载主编辑器。 */
+.workspace-layout { height: max(560px, calc(100vh - 226px)); min-width: 0; padding-left: 14px; position: relative; }
+.page-editor .workspace-layout { height: 100%; }
+.workspace-layout > .ant-card { min-width: 0; min-height: 0; height: 100%; border-radius: 8px; overflow: hidden; }
+.resource-rail { width: 28px; height: 112px; position: absolute; left: 0; top: 50%; z-index: 2; transform: translateY(-50%); border: 1px solid #4B5CC4; border-radius: 999px; background: #FFFFFF; color: #4B5CC4; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; cursor: pointer; transition: background-color .16s ease, transform .16s ease; }
+.resource-rail span { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0; line-height: 1.2; }
+.resource-rail:hover, .resource-rail:focus-visible, .resource-rail.is-active { background: #F5F5F5; transform: translateY(-50%) translateX(1px); outline: none; }
+.resource-rail:disabled { border-color: #BFBFBF; background: #BFBFBF; cursor: default; box-shadow: none; }
+.view-mode-float { min-height: 38px; position: absolute; top: 7px; left: 50%; z-index: 5; transform: translateX(-50%); padding: 3px; border: 1px solid #E5E5E5; border-radius: 999px; background: #FFFFFF; box-shadow: 0 3px 12px rgba(38, 38, 38, .10); display: flex; align-items: center; gap: 2px; }
+.view-mode-button { width: 34px !important; height: 30px !important; padding: 0 !important; border-radius: 999px !important; display: inline-flex; align-items: center; justify-content: center; }
+.panel-title { display: flex; align-items: center; gap: 8px; }
+.pill-input { margin-bottom: 12px; flex: 0 0 auto; }
+.tree-scroll { min-height: 0; flex: 1; overflow: auto; }
+.tree-scroll .ant-tree { width: max-content; min-width: 100%; background: transparent; }
+.tree-scroll .ant-tree-title { white-space: nowrap; }
+.tree-scroll .pane-empty { min-height: 180px; }
+.drawer-file-tree .ant-drawer-body, .drawer-file-tree.ant-drawer-content-wrapper .ant-drawer-body { min-height: 0; }
+.drawer-file-tree .ant-drawer-body { display: flex; flex-direction: column; padding: 16px; }
+.drawer-file-tree > .tree-scroll { min-height: 240px; }
+
+/* 编辑模式只保留工具栏和编辑画布，文件详细信息统一通过抽屉按需查看。 */
+.editor-panel > .ant-card-body { height: 100%; min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); }
+.editor-toolbar { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 16px; border-bottom: 1px solid #E5E5E5; }
+.selected-file-title { min-width: 0; display: flex; align-items: center; gap: 8px; }
+.selected-file-title > .ant-typography { min-width: 0; max-width: 360px; }
+.selected-file-title > svg { flex: 0 0 auto; }
+.editor-actions { flex: 0 0 auto; }
+/* 分屏两侧保持稳定阅读宽度，屏幕不足时由整个画布提供唯一一条横向滚动条。 */
+.editor-workspace { min-width: 0; min-height: 0; display: flex; overflow-x: auto; overflow-y: hidden; scrollbar-color: #BFBFBF #F5F5F5; scrollbar-width: thin; }
+.editor-workspace::-webkit-scrollbar { height: 10px; }
+.editor-workspace::-webkit-scrollbar-track { background: #F5F5F5; }
+.editor-workspace::-webkit-scrollbar-thumb { border: 2px solid #F5F5F5; border-radius: 999px; background: #BFBFBF; }
+.editor-workspace::-webkit-scrollbar-thumb:hover { background: #4B5CC4; }
+.editor-pane, .preview-pane { min-width: 760px; min-height: 0; flex: 1 0 760px; overflow-y: auto; overflow-x: hidden; background: #FFFFFF; }
+.single-pane { min-width: 100%; min-height: 0; flex: 1; overflow-y: auto; overflow-x: hidden; background: #FFFFFF; }
+.mode-源码 .editor-pane, .mode-预览 .preview-pane { min-width: 100%; flex-basis: 100%; }
+.editor-pane { overflow: hidden; }
+.preview-pane { position: relative; background: #F5F5F5; }
+.preview-pane::-webkit-scrollbar { width: 0; height: 0; }
+.editor-pane .monaco-editor .view-lines, .editor-pane .monaco-editor .view-line { cursor: text !important; }
+.splitter { width: 1px; flex: 0 0 1px; background: #E5E5E5; position: relative; }
+.splitter::after { content: ''; position: absolute; top: calc(50% - 18px); left: -4px; width: 8px; height: 36px; border-radius: 999px; background: #BFBFBF; }
+.pane-empty { width: 100%; height: 100%; min-height: 240px; display: grid; place-items: center; padding: 20px; }
+.markdown-preview { width: 100%; max-width: 760px; margin: 0 auto; padding: 18px 30px 60px; line-height: 1.75; color: #262626; overflow-wrap: anywhere; }
+.markdown-preview > :first-child { margin-top: 0; }
+.markdown-preview h1, .markdown-preview h2, .markdown-preview h3 { color: #262626; line-height: 1.35; }
+.markdown-preview blockquote { margin-left: 0; padding-left: 14px; border-left: 3px solid #4B5CC4; color: #595959; }
+.markdown-preview code { background: #E5E5E5; border-radius: 6px; padding: 2px 5px; }
+.markdown-preview pre { max-width: 100%; overflow: auto; }
+.markdown-preview li::marker { color: #4B5CC4; }
+.markdown-preview table { width: 100%; margin: 18px 0; border-collapse: collapse; table-layout: fixed; background: #FFFFFF; }
+.markdown-preview th, .markdown-preview td { padding: 10px 12px; border: 1px solid #BFBFBF; text-align: left; vertical-align: top; }
+.markdown-preview th { background: #EDEDED; font-weight: 700; }
+.markdown-preview tbody tr:nth-child(even) { background: #FAFAFA; }
+.markdown-preview .editing-block { position: relative; outline: 1px dashed #4B5CC4; outline-offset: 5px; border-radius: 2px; transition: outline-color .16s ease, background-color .16s ease; }
+.markdown-preview li.editing-block { padding-block: 2px; }
+.markdown-preview .editing-block::after { content: '正在编辑'; position: absolute; top: -16px; right: 0; padding: 2px 8px; border-radius: 999px; background: #FFFFFF; color: #4B5CC4; font-size: 11px; line-height: 18px; box-shadow: 0 1px 6px rgba(38, 38, 38, .12); }
+.plain-text-preview { min-height: 100%; margin: 0; padding: 24px; white-space: pre-wrap; overflow-wrap: anywhere; color: #262626; background: #FFFFFF; font: 14px/1.7 Consolas, monospace; }
+.html-preview { width: 100%; height: 100%; min-height: 100%; display: block; border: 0; background: #FFFFFF; }
+.image-preview { width: 100%; height: 100%; min-height: 300px; display: grid; place-items: center; padding: 24px; overflow: auto; background: #F5F5F5; }
+.image-preview img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; background: #FFFFFF; }
+
+/* 抽屉中的文件详情允许长路径截断，完整值通过提示查看。 */
+.file-meta { text-align: center; display: grid; justify-items: center; gap: 7px; }
+.file-meta h5 { max-width: 100%; margin: 4px 0 0; overflow-wrap: anywhere; }
+.file-meta-icon { width: 52px; height: 52px; border-radius: 8px; background: #F5F5F5; color: #4B5CC4; display: grid; place-items: center; }
+.meta-row { display: flex; justify-content: space-between; align-items: flex-start; margin: 13px 0; gap: 12px; font-size: 12px; }
+.meta-row > .ant-typography:last-child { min-width: 0; max-width: 62%; text-align: right; }
+.path-row > .ant-typography:last-child { max-width: 68%; }
+.import-mode { margin-bottom: 14px; }
+.import-name-input { margin-bottom: 16px; }
+.import-picker-panel { min-height: 300px; padding: 36px; border: 1px dashed #BFBFBF; border-radius: 8px; background: #F5F5F5; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transition: border-color .18s ease, background-color .18s ease; }
+.import-picker-panel:hover { border-color: #4B5CC4; }
+.import-picker-panel.is-dragging { border-color: #4B5CC4; background: #CBD5F2; }
+.import-picker-panel h4 { margin: 14px 0 4px; }
+.import-picker-panel p { margin: 0 0 20px; }
+.import-picker-icon { width: 58px; height: 58px; border-radius: 8px; background: #4B5CC4; color: #FFFFFF; display: grid; place-items: center; flex: 0 0 auto; }
+.import-picker-icon.small { width: 40px; height: 40px; }
+.import-selection-panel { border: 1px solid #E5E5E5; border-radius: 8px; overflow: hidden; }
+.import-selection-summary { min-height: 70px; padding: 14px 16px; background: #F5F5F5; border-bottom: 1px solid #E5E5E5; display: flex; align-items: center; gap: 12px; }
+.import-selection-summary > div:nth-child(2) { min-width: 0; flex: 1; display: grid; }
+.import-file-list { max-height: 290px; overflow: auto; }
+.import-file-row { min-height: 44px; padding: 9px 16px; display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; align-items: center; gap: 10px; border-bottom: 1px solid #E5E5E5; }
+.import-file-row:nth-child(even) { background: #FAFAFA; }
+.import-file-row:last-child { border-bottom: 0; }
+.import-file-more { padding: 12px 16px; color: #595959; text-align: center; background: #F5F5F5; }
+
+/* 管理页面使用表格式扫描结构，在宽屏上同时展示来源、体量和更新时间。 */
+.management-section { background: #FFFFFF; border: 1px solid #E5E5E5; border-radius: 8px; overflow: hidden; }
+.section-toolbar { min-height: 76px; padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #E5E5E5; }
+.section-toolbar h4 { margin: 0 0 2px; }
+.management-empty { min-height: 320px; display: grid; place-items: center; }
+.workspace-table-head, .workspace-row { display: grid; grid-template-columns: minmax(220px, 1.5fr) 110px 80px 100px 170px minmax(220px, .8fr); gap: 14px; align-items: center; padding: 13px 24px; text-align: center; }
+.workspace-table-head > *, .workspace-row > * { min-width: 0; justify-self: center; }
+.workspace-table-head > :last-child, .workspace-row > :last-child { width: 100%; padding-inline: 18px; justify-self: stretch; display: flex; justify-content: center; }
+.workspace-table-head { min-height: 46px; color: #595959; font-size: 12px; background: #F5F5F5; border-bottom: 1px solid #E5E5E5; }
+.workspace-row { min-height: 76px; border-bottom: 1px solid #E5E5E5; transition: background-color .16s ease, box-shadow .16s ease; }
+.workspace-row:nth-child(even) { background: #FAFAFA; }
+.workspace-row:last-child { border-bottom: 0; }
+.workspace-row:hover { background: #EDEDED; }
+.workspace-row.is-current { background: #F5F5F5; box-shadow: inset 3px 0 0 #4B5CC4; }
+.workspace-row.is-current:hover { background: #EDEDED; }
+.workspace-name-cell { width: 100%; min-width: 0; display: flex; align-items: center; justify-content: center; gap: 12px; }
+.workspace-name-cell > div:last-child { min-width: 0; display: grid; justify-items: center; }
+.workspace-name-cell .ant-typography { max-width: 100%; overflow: hidden; overflow-wrap: anywhere; white-space: normal; line-height: 1.45; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.workspace-icon { width: 38px; height: 38px; flex: 0 0 auto; border-radius: 8px; display: grid; place-items: center; color: #4B5CC4; background: #F5F5F5; }
+
+/* GitHub 仓库沿用管理页的表格式扫描结构，搜索和操作区保持稳定列宽。 */
+.github-repository-toolbar { gap: 20px; }
+.repository-search { width: min(360px, 44vw); border-radius: 999px !important; }
+.repository-table-head, .repository-row { display: grid; grid-template-columns: minmax(280px, 1.6fr) 90px 150px 180px minmax(220px, .8fr); gap: 14px; align-items: center; padding: 13px 24px; text-align: center; }
+.repository-table-head > *, .repository-row > * { min-width: 0; justify-self: center; }
+.repository-table-head > :last-child, .repository-row > :last-child { width: 100%; justify-content: center; }
+.repository-table-head { min-height: 46px; color: #595959; font-size: 12px; background: #F5F5F5; border-bottom: 1px solid #E5E5E5; }
+.repository-row { min-height: 78px; border-bottom: 1px solid #E5E5E5; transition: background-color .16s ease; }
+.repository-row:nth-child(even) { background: #FAFAFA; }
+.repository-row:last-child { border-bottom: 0; }
+.repository-row:hover { background: #EDEDED; }
+.repository-name-cell { width: 100%; min-width: 0; display: flex; align-items: center; gap: 12px; text-align: left; }
+.repository-name-cell > div:last-child { min-width: 0; display: grid; gap: 3px; }
+.repository-name-cell .ant-typography { min-width: 0; max-width: 100%; }
+.repository-branch { min-width: 0; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.repository-branch .ant-typography { max-width: 110px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* GitHub skill 选择弹窗先命名工作区，再在稳定高度的列表中多选扫描结果。 */
+.github-workspace-name { margin-bottom: 16px; border-radius: 999px !important; }
+.skill-selection-heading { min-height: 58px; padding: 10px 14px; border: 1px solid #E5E5E5; border-radius: 8px 8px 0 0; background: #F5F5F5; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.skill-selection-heading > div { min-width: 0; display: grid; gap: 2px; }
+.skill-selection-list { width: 100%; max-height: 360px; overflow: auto; border: 1px solid #E5E5E5; border-top: 0; border-radius: 0 0 8px 8px; display: grid; }
+.skill-selection-row { width: 100%; min-height: 58px; margin: 0 !important; padding: 10px 14px; border-bottom: 1px solid #E5E5E5; display: flex !important; align-items: center; transition: background-color .16s ease; }
+.skill-selection-row:nth-child(even) { background: #FAFAFA; }
+.skill-selection-row:last-child { border-bottom: 0; }
+.skill-selection-row:hover { background: #CBD5F2; }
+.skill-selection-row > span:last-child { min-width: 0; flex: 1; }
+.skill-selection-copy { min-width: 0; display: grid; gap: 2px; }
+.skill-selection-copy .ant-typography { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.skill-selection-empty { min-height: 260px; border: 1px solid #E5E5E5; border-top: 0; border-radius: 0 0 8px 8px; display: grid; place-items: center; }
+
+/* 外部连接和账号页是独立业务模块，不与编辑器或工作区卡片混排。 */
+.connection-section, .profile-section { padding: 24px; }
+.connection-section { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 24px; }
+.connection-main { min-width: 0; display: flex; align-items: flex-start; gap: 16px; }
+.connection-logo { width: 52px; height: 52px; flex: 0 0 auto; border-radius: 8px; color: #FFFFFF; background: #4B5CC4; display: grid; place-items: center; }
+.connection-copy h4, .connection-copy p { margin: 0; }
+.connection-copy p { margin-top: 10px; color: #595959; }
+.connection-identity { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+.connection-actions { display: flex; align-items: center; gap: 10px; }
+.connection-actions .source-tag.is-connected { border-color: #4B5CC4; color: #4B5CC4; background: #FFFFFF; }
+.connection-section > .ant-divider { grid-column: 1 / -1; }
+.permission-grid { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.permission-grid > div, .profile-fields > div { display: grid; gap: 5px; }
+.profile-identity { display: flex; align-items: center; gap: 18px; }
+.profile-identity h3 { margin: 0 0 3px; }
+.profile-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+
+/* 中型桌面保持单一编辑区，并适度压缩标题栏操作间距。 */
+@media (max-width: 1399px) {
+  .app-content { padding: 18px 24px 24px; }
+  .editor-heading { grid-template-columns: minmax(190px, 1fr) auto minmax(260px, 1fr); gap: 16px; }
+  .editor-heading .heading-actions { gap: 6px !important; }
+  .workspace-table-head, .workspace-row { grid-template-columns: minmax(190px, 1.4fr) 90px 64px 90px 140px minmax(200px, .8fr); gap: 8px; padding-inline: 16px; }
+  .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .repository-table-head, .repository-row { grid-template-columns: minmax(240px, 1.5fr) 82px 130px 150px minmax(200px, .8fr); gap: 8px; padding-inline: 16px; }
+}
+
+@media (max-width: 1099px) {
+  .editor-heading { grid-template-columns: minmax(200px, 1fr) auto; }
+  .editor-heading .heading-actions { grid-column: 1 / -1; justify-self: end; }
+  .workspace-table-head, .workspace-row { grid-template-columns: minmax(200px, 1.4fr) 90px 140px minmax(200px, .8fr); }
+  .workspace-table-head > :nth-child(3), .workspace-table-head > :nth-child(4),
+  .workspace-row > :nth-child(3), .workspace-row > :nth-child(4) { display: none; }
+  .repository-table-head, .repository-row { grid-template-columns: minmax(240px, 1.5fr) 100px 150px minmax(200px, .8fr); }
+  .repository-table-head > :nth-child(2), .repository-row > :nth-child(2) { display: none; }
+}
+
+@media (max-width: 999px) {
+  .auth-shell { grid-template-columns: minmax(0, 430px); gap: 28px; padding: 32px 20px; }
+  .auth-brand { width: 100%; }
+}
+
+/* 小屏使用抽屉导航，工作区改为纵向结构，彻底消除侧栏挤压造成的横向溢出。 */
+@media (max-width: 767px) {
+  .auth-shell { display: flex; flex-direction: column; justify-content: center; gap: 28px; padding: 28px 16px; }
+  .auth-brand { position: static; width: min(100%, 430px); }
+  .auth-card { margin: 0; }
+  .app-header { padding: 0 14px; }
+  .breadcrumb .ant-typography-secondary, .breadcrumb > svg { display: none; }
+  .app-content { padding: 18px 14px 24px; }
+  .page-heading { display: grid; gap: 14px; margin-bottom: 18px; }
+  .editor-heading { grid-template-columns: minmax(0, 1fr); justify-items: stretch; }
+  .view-mode-switch { width: 100%; min-width: 0; }
+  .view-mode-switch .ant-segmented-item { min-width: 0; }
+  .heading-actions { width: 100%; display: flex; }
+  .heading-actions .ant-space-item { flex: 1; }
+  .heading-actions .ant-btn, .heading-actions .ant-space-item > span { width: 100%; }
+  .workspace-layout { height: 620px; display: grid; grid-template-columns: minmax(0, 1fr); }
+  .editor-panel { height: 100% !important; }
+  .editor-toolbar { min-height: 58px; padding: 8px 12px; flex-wrap: wrap; }
+  .selected-file-title { max-width: 100%; }
+  .selected-file-title > .ant-typography { max-width: 180px; }
+  .editor-actions { margin-left: auto; }
+  .editor-workspace.mode-分屏 { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+  .mode-分屏 .editor-pane { border-bottom: 1px solid #E5E5E5; }
+  .mode-分屏 .splitter { display: none; }
+  .editor-pane, .preview-pane { min-width: 100%; flex-basis: 100%; }
+  .markdown-preview { padding: 22px 20px 44px; }
+  .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .recent-workspace-row { grid-template-columns: minmax(0, 1fr) auto; padding: 14px 16px; }
+  .recent-workspace-row > :nth-child(2), .recent-workspace-row > :nth-child(3) { display: none; }
+  .workspace-table-head { display: none; }
+  .workspace-row { grid-template-columns: minmax(0, 1fr) auto; gap: 10px; padding: 16px; }
+  .workspace-row > :nth-child(3), .workspace-row > :nth-child(4), .workspace-row > :nth-child(5) { display: none; }
+  .workspace-row > :last-child { grid-column: 1 / -1; justify-self: end; }
+  .github-repository-toolbar { align-items: stretch; flex-direction: column; }
+  .repository-search { width: 100%; }
+  .repository-table-head { display: none; }
+  .repository-row { grid-template-columns: minmax(0, 1fr) auto; gap: 10px; padding: 16px; }
+  .repository-row > :nth-child(2), .repository-row > :nth-child(3), .repository-row > :nth-child(4) { display: none; }
+  .repository-row > :last-child { grid-column: 1 / -1; justify-self: end; }
+  .connection-section { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .connection-actions { justify-content: flex-end; }
+  .permission-grid, .profile-fields { grid-template-columns: minmax(0, 1fr); }
+  .app-footer { padding-inline: 16px !important; }
+}
+
+@media (max-width: 479px) {
+  .header-source { display: none; }
+  .page-heading h2 { font-size: 24px; }
+  .app-footer .ant-typography:last-child { display: none; }
+}

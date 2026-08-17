@@ -1,0 +1,17 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: skillforge-studio-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: skillforge_studio
+      MYSQL_USER: skillforge
+      MYSQL_PASSWORD: change-me
+      MYSQL_ROOT_PASSWORD: root-change-me
+    ports:
+      - "3306:3306"
+    volumes:
+      - skillforge_mysql_data:/var/lib/mysql
+
+volumes:
+  skillforge_mysql_data:

@@ -1,0 +1,40 @@
+server:
+  port: ${SERVER_PORT:8080}
+  forward-headers-strategy: framework
+  tomcat:
+    # 一次导入最多包含 1 个工作区名称、500 个文件和 500 个相对路径，共 1001 个 multipart part。
+    max-part-count: ${MAX_PART_COUNT:1001}
+  servlet:
+    session:
+      cookie:
+        http-only: true
+        same-site: lax
+
+spring:
+  application:
+    name: skillforge-studio-backend
+  config:
+    # 私密配置仅在本机存在，缺失时仍允许项目使用环境变量默认值启动。
+    import: optional:classpath:application-secrets.yml
+  datasource:
+    url: ${DB_URL:jdbc:mysql://127.0.0.1:3306/skillforge_studio?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai}
+    username: ${DB_USERNAME:skillforge}
+    password: ${DB_PASSWORD:change-me}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  flyway:
+    enabled: ${FLYWAY_ENABLED:true}
+  servlet:
+    multipart:
+      max-file-size: ${MAX_FILE_SIZE:20MB}
+      max-request-size: ${MAX_REQUEST_SIZE:100MB}
+springdoc:
+  # springdoc 负责生成 OpenAPI 数据，Knife4j 的 doc.html 从这些端点读取接口定义。
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+skillforge:
+  storage:
+    # 所有本地导入文件都保存到该根目录下的独立工作区子目录。
+    local-root: ${STORAGE_LOCAL_ROOT:D:/code/skillforge-studio/upload}

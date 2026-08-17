@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">SkillForge Studio</title>
+  <desc id="desc">宝蓝色圆角方形中的白色锻造线条组成字母 S</desc>
+  <rect width="64" height="64" rx="14" fill="#4B5CC4"/>
+  <path d="M45 18H27C21.5 18 18 21.1 18 25.5S21.5 33 27 33h10c5.5 0 9 3.1 9 7.5S42.5 48 37 48H19" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M22 13v8M42 43v8" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+</svg>
